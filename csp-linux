@@ -1,3 +1,8 @@
+#!/usr/bin/bash
+
+CLIP_PATH="`winepath --windows \"$1\"`"
+
+echo $CLIP_PATH
 export PROTON_PATH=$(cat ~/.config/csprc | grep PROTON_PATH | cut -d '=' -f 2)
 echo $PROTON_PATH
 export STEAM_COMPAT_DATA_PATH=$(cat ~/.config/csprc | grep STEAM_COMPAT_DATA_PATH | cut -d '=' -f 2)
@@ -11,4 +16,10 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Starting CSP..."
-$PROTON_PATH/proton run $STEAM_COMPAT_DATA_PATH/pfx/drive_c/Program\ Files/CELSYS/CLIP\ STUDIO\ 1.5/CLIP\ STUDIO\ PAINT/CLIPStudioPaint.exe
+if [ -z "$CLIP_PATH" ]
+then
+    $PROTON_PATH/proton run $STEAM_COMPAT_DATA_PATH/pfx/drive_c/Program\ Files/CELSYS/CLIP\ STUDIO\ 1.5/CLIP\ STUDIO\ PAINT/CLIPStudioPaint.exe
+else
+    $PROTON_PATH/proton run $STEAM_COMPAT_DATA_PATH/pfx/drive_c/Program\ Files/CELSYS/CLIP\ STUDIO\ 1.5/CLIP\ STUDIO\ PAINT/CLIPStudioPaint.exe "$CLIP_PATH"
+fi
+

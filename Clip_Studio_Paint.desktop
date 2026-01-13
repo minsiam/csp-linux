@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Clip Studio Paint
+Comment=Clip Studio Paint
+Exec=/home/devovas/.local/share/csp-linux/launch/csp-linux %f
+Icon=/home/devovas/.local/share/csp-linux/csp.png
+Terminal=false
+Type=Application
